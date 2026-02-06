@@ -38,13 +38,13 @@ cursor.execute('''
 #o Correspondência (ligar colunas) 
 def correspondecia (): 
     
-    perguntas=input("Digite o enunciado da atividade: ")
+    pergunta=input("Digite o enunciado da atividade: ")
     coluna_1=input("Digite a primeira coluna: ")
     coluna_2=input("Digite a segunda coluna: ")
     pares = input("Digite os pares das colunas(ex: A-1; B-2; C-3): ")
     respostas= pares  
     dica=input("Digite a dica: ")
-    cursor.execute('''INSET INTO atividades(perguntas ,coluna_1, coluna_2, pares, respostas, dica,) VALUES (?, ?, ?, ?, ?, ?)''', (perguntas,coluna_1,coluna_2, respostas, pares, dica,))
+    cursor.execute('''INSET INTO atividades(pergunta ,coluna_1, coluna_2, pares, respostas, dica,) VALUES (?, ?, ?, ?, ?, ?)''', (pergunta,coluna_1,coluna_2, respostas, pares, dica,))
     cursor.execute('''INSET INTO opcoes(pares) VALUES (?)''')
     conexao.commit()
 
@@ -62,15 +62,15 @@ def classificacao ():
 #o Escolha múltipla (várias corretas)
 def escolha_multipla():
     
-    questao=input("Digite o enunciado da atividade: ")
+    pergunta=input("Digite o enunciado da atividade: ")
     opcao_a = input("Digite a 'A' opção : ")
     opcao_b = input("Digite a 'B' opção : ")
     opcao_c = input("Digite a 'C' opção : ")
     opcao_d = input("Digite a 'D' opção : ")
     respostas=input("Digite as alternativas certas (ex: A,C) : ")
     dica=input("Digite a dica: ") 
-    cursor.execute('''INSET INTO atividades( perguntas, opcoes, respostas, dica) VALUES (?, ?, ?, ?, ?, ?)''', ( questao, respostas, dica, ))
-    cursor.execute('''INSERT INTO opcoes(opcao_a, opcao_b, opcao_c, opcao_d) VALUES (?, ?, ?, ?, ?, ?)''', ( opcao_a, opcao_b, opcao_c, opcao_d,)) 
+    cursor.execute('''INSET INTO atividades( pergunta,respostas, dica) VALUES (?, ?, ?)''', ( pergunta, respostas, dica, ))
+    cursor.execute('''INSERT INTO opcoes(opcao_a, opcao_b, opcao_c, opcao_d) VALUES (?, ?, ?, ?)''', ( opcao_a, opcao_b, opcao_c, opcao_d,)) 
     conexao.commit()
 
 #o Palavra embaralhada
