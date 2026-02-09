@@ -23,7 +23,6 @@ cursor.execute('''
     )
     ''')
 
-
 cursor.execute('''
    CREATE TABLE IF NOT EXISTS modulos(
        id_modulo TEXT NOT NULL,
